@@ -4,22 +4,6 @@
 2 FORM LINEAGE-LINKED
 1 CHAR UTF-8
 1 LANG English
-1 SOUR 
-2 NAME 
-2 VERS 8.0.0.8367
-2 _RTLSAVE RTL
-2 CORP
-1 SUBM @U1@
-1 DEST 
-1 DATE 17 JUN 2017
-2 TIME 12:02:31 
-2 _TIMEZONE GMT+9.5
-1 _RINS I11486,F6139,N5577,M0,R0,S0,U8,L0,P21,Q0,IF23234,FF115648
-1 _UID 59447DB5937471EA9548CA06F608A2FA
-1 _DESCRIPTION_AWARE Y
-0  _PUBLISH
-1 _USERNAME 
-1 _DISABLED Y
 0 @U1@ SUBM
 1 RIN MH:U1
 1 NAME M M Wardle
@@ -15899,16 +15883,12 @@
 1 FAMS @F2075@
 1 FAMC @F2076@
 1 NOTE <p>alt mother = Boadicea (Queen) of ICENIANS ( Born: abt. 22 Died: abt. 62 poisoned self after defeat in Battle)</p>
-2 CONT <div id="j1">Boadicea (Queen) of ICENIANS</div>
-<div id="j2"><br />&nbsp; &nbsp; &nbsp;(Boadicca Boudicea Boudicca Victoria)</div>
-<p><br />&nbsp; &nbsp; Note: <span style="color: #481000;">Famous War
+2 CONT <div id="j1">Boadicea (Queen) of ICENIANS</div> <div id="j2"><br />&nbsp; &nbsp; &nbsp;(Boadicca Boudicea Boudicca Victoria)</div> <p><br />&nbsp; &nbsp; Note: <span style="color: #481000;">Famous War
 2 CONC rior Queen; Ruler of Iceni tribe. After being flogged and insulted by Romans, she led her army in a bloody campaign, destroying a Roman legion and killing some 70,000 Roman (and collaborating) civilia
 2 CONC ns before Rome's armies put her down.<br />&nbsp; &nbsp; Boadicea is supposedly buried under what is now Platform 8 of London's King's Cross Railway Station.</span></p>
 2 CONT <p>&nbsp;</p>
-2 CONT <div id="jd">
-<p>&nbsp; &nbsp; &nbsp;Born: &nbsp;abt. 22 &nbsp; &nbsp;Died: &nbsp;abt. 62&nbsp; &nbsp; &nbsp;poisoned self after defeat in Battle</p>
-2 CONT </div>
-<p>&nbsp;</p>
+2 CONT <div id="jd"> <p>&nbsp; &nbsp; &nbsp;Born: &nbsp;abt. 22 &nbsp; &nbsp;Died: &nbsp;abt. 62&nbsp; &nbsp; &nbsp;poisoned self after defeat in Battle</p>
+2 CONT </div> <p>&nbsp;</p>
 2 CONT <p>&nbsp;</p>
 0 @I4394@ INDI
 1 RIN MH:I4394
@@ -60356,8 +60336,7 @@
 1 FAMC @F4825@
 1 NOTE <p style="text-align: left;" dir="ltr">&nbsp;</p>
 2 CONT <p><div id="j2">&nbsp;aka Coilus (III) Votepacus; Guotepauk (Godhebog Guotepauc Godebog) = `the Magnificent/Splendid'; `Old King Cole' (WLEDIG ?); prob. last Roman Duke of BRITAIN; High King of North 
-2 CONC Britain; (his pedigree may be uncertain, he was prob. of Votadini tribe, or perhaps Brigantes)</div>
-<p style="text-align: left;" dir="ltr"><br />&nbsp; &nbsp; Note: <span style="color: #481000;">Defe
+2 CONC Britain; (his pedigree may be uncertain, he was prob. of Votadini tribe, or perhaps Brigantes)</div> <p style="text-align: left;" dir="ltr"><br />&nbsp; &nbsp; Note: <span style="color: #481000;">Defe
 2 CONC nded Northern Britain from Picts and Irish after Romans left. Possibly he King who invited Saxon mercenaries to Britain.</span></p>
 0 @I9157@ INDI
 1 RIN MH:I9157
@@ -61304,8 +61283,7 @@
 2 CAUS poisoned self after defeat in Battle
 1 FAMS @F4866@
 1 FAMC @F4868@
-1 NOTE <div id="j2">&nbsp;(Boadicca Boudicea Boudicca Victoria)</div>
-<p style="text-align: left;" dir="ltr"><br />&nbsp; &nbsp; Note: <span style="color: #481000;">Famous Warrior Queen; Ruler of Iceni tribe
+1 NOTE <div id="j2">&nbsp;(Boadicca Boudicea Boudicca Victoria)</div> <p style="text-align: left;" dir="ltr"><br />&nbsp; &nbsp; Note: <span style="color: #481000;">Famous Warrior Queen; Ruler of Iceni tribe
 2 CONC . After being flogged and insulted by Romans, she led her army in a bloody campaign, destroying a Roman legion and killing some 70,000 Roman (and collaborating) civilians before Rome's armies put her 
 2 CONC down.<br />&nbsp; &nbsp; Boadicea is supposedly buried under what is now Platform 8 of London's King's Cross Railway Station.</span></p>
 0 @I9217@ INDI
@@ -66872,8 +66850,7 @@
 2 DATE 1107
 1 FAMS @F5327@
 1 FAMC @F5326@
-1 NOTE <div id="j2">&nbsp;aka Zayda de SEVILLA; christened Elisabet; (oldest source shows her as daughter-in-law, not niece, of Abenabeth)</div>
-<p style="text-align: left;" dir="ltr"><br />&nbsp; &nbsp; Not
+1 NOTE <div id="j2">&nbsp;aka Zayda de SEVILLA; christened Elisabet; (oldest source shows her as daughter-in-law, not niece, of Abenabeth)</div> <p style="text-align: left;" dir="ltr"><br />&nbsp; &nbsp; Not
 2 CONC e: <span style="color: #481000;">Zaida is an important 'gateway' to show European royalty as descended from Muhammed. She was the concubine of King Alfonso VI and mother of his only son (who died heir
 2 CONC less), and probably mother of the two daughters shown here (though confusion arises because Alfonso's fourth wife had the same Christian name as was given to Zaida). However, nothing certain is known 
 2 CONC of her ancestry: showing the Emir of Seville as her father seems to be an old error.</span></p>
