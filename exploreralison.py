@@ -80,6 +80,8 @@ def naive(file, indiv1, indiv2):
 indiv1 = '<gedcom.element.individual.IndividualElement object at 0x0000027D9F97A310>'
 indiv2 = find_IndividualElement("Emma","Ramsay")[1]
 
-naive("Queen_Eliz_II.ged", indiv1 , indiv2)
+#naive("Queen_Eliz_II.ged", indiv1 , indiv2)
+
+print(indiv2.get_level())
 
 #mon erreur vient du fait qu'il ne trouve pas les deux individus dans le fichier converti ...
