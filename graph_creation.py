@@ -251,7 +251,8 @@ def build_IndGraph(file_path='Queen_Eliz_II.ged'):
                 g[IND1][INDI2] = graph_value(column)
     return g
 
-
+"""
 # Test : graph creation
 graph = build_IndGraph()
 print(graph)
+"""
