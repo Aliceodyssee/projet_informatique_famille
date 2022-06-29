@@ -6,8 +6,6 @@ import gedcom.tags
 import numpy as np
 import pandas as pd
 import math
-from dijkstar import Graph, find_path
-
 
 # Parser
 gedcom_parser = Parser()

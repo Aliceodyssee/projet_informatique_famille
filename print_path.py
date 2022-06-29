@@ -6,7 +6,6 @@ import gedcom.tags
 import numpy as np
 import pandas as pd
 import math
-from dijkstar import Graph, find_path
 
 
 # Parser
@@ -18,7 +17,7 @@ root_child_elements = gedcom_parser.get_root_child_elements()
 
 
 # names of family links
-links = {'parents' : ('father', 'mother'), 
+links = {'parent' : ('father', 'mother'), 
          'spouse' : ('husband', 'wife'),
          'sibling' : ('brother', 'sister'), 
          'grandparent' : ('grandfather', 'grandmother'),
@@ -72,12 +71,12 @@ def gendered_link(tag, link) :
         link with gender
     """
 
-    if find_Element(tag)[0] == True : indvidual = find_Element(tag)[1]
+    if find_Element(tag)[0] : indvidual = find_Element(tag)[1]
     
     if indvidual.get_gender() == "M" :
-        return links[links][0]
+        return links[link][0]
     else :
-        return links[links][1]
+        return links[link][1]
 
 
 def print_path(shortest_path,v1,v2) :
@@ -97,11 +96,18 @@ def print_path(shortest_path,v1,v2) :
     """
     distance, path = shortest_path
     ind, link = path[0]
-    print (v2 + "is the" + gendered_link(path[0][0], path[0][1]))
+
+    if find_Element(v1)[0] : element1 = find_Element(v1)[1]
+    name1, surname1 = element1.get_name()
+
+    if find_Element(v2)[0] : element2 = find_Element(v2)[1]
+    name2, surname2 = element2.get_name()
+
+    print (name2 + " is the " + gendered_link(path[0][0], path[0][1]))
     for i in range (1, len(path)) :
         ind, link = path[i]
-        print("of the" + gendered_link(ind, link))
-    print ("of" + v1)
+        print(" of the " + gendered_link(ind, link))
+    print (" of " + name1)
 
     # les print s'afficheront sûrement chacun à la ligne
     # il faut trouver une commande qui empêche ça
