@@ -20,11 +20,12 @@ root_child_elements = gedcom_parser.get_root_child_elements()
 links = {'parent' : ('father', 'mother'), 
          'spouse' : ('husband', 'wife'),
          'sibling' : ('brother', 'sister'), 
-         'grandparent' : ('grandfather', 'grandmother'),
-         'grandchild' : ('grandson', 'granddaughter'), 
+         'grandparent' : ('grand father', 'grand mother'),
+         'grandchild' : ('grand son', 'grand daughter'), 
          'nephew' : ('nephew', 'niece'), 
          'uncle' : ('uncle', 'aunt'),
-         'cousin' : ('cousin', 'cousin')
+         'cousin' : ('cousin', 'cousin'),
+         'child' : ('son', 'daughter')
 
         }
 
@@ -106,7 +107,11 @@ def print_path(shortest_path,v1,v2) :
     print (name2 + " is the " + gendered_link(path[0][0], path[0][1]))
     for i in range (1, len(path)) :
         ind, link = path[i]
-        print(" of the " + gendered_link(ind, link))
+        if i%3 == 2 :
+            if find_Element(ind)[0] : element = find_Element(ind)[1]
+            name, surname = element.get_name()
+            print(" of " + name + ", who is the " + gendered_link(ind, link))
+        else : print(" of the " + gendered_link(ind, link))
     print (" of " + name1)
 
     # les print s'afficheront sûrement chacun à la ligne
