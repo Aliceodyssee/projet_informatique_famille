@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 import math
 from dijkstar import Graph, find_path
+from explorer_functions import find_Element
 
 
 # Parser
@@ -29,6 +30,33 @@ links = {'parents' : ('father', 'mother'),
 
         }
 
+def find_Element(tag):
+    """
+    Gets element of ged with its tag
+
+    Parameters
+    ---
+    tag : str
+        tag of element
+
+    Returns 
+    ---
+    bool 
+        Tells if the individual was found
+    IndividualElement
+        Element corresponding to the tag
+
+    """
+    file_path = 'Queen_Eliz_II.ged'
+    gedcom_parser = Parser()
+    gedcom_parser.parse_file(file_path)
+    root_child_elements = gedcom_parser.get_root_child_elements()
+    for element in root_child_elements:
+        if element.get_tag() == tag :
+            return [True, element]
+    return [False, element]
+
+
 def gendered_link(tag, link) :
     """
     Adds gender to family link
@@ -45,7 +73,7 @@ def gendered_link(tag, link) :
         link with gender
     """
 
-    indvidual = find_Element(tag)[1]
+    indvidual = find_Element(tag)
     
     if indvidual.get_gender() == "M" :
         return links[links][0]
