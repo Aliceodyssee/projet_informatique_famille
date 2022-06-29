@@ -1,5 +1,8 @@
 # projet_informatique_famille
 
+Ce projet permet de retrouver le lien (intelligent) entre deux personnes dans un arbre généalogique.
+
+
 lien utile pour la pise en main de la librairie python-gedcom:
 https://pypi.org/project/python-gedcom/
 
