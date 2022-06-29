@@ -18,4 +18,8 @@ https://en.wikipedia.org/wiki/Breadth-first_search
 https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
 
 
+Dijkstar
+https://pypi.org/project/Dijkstar/
+
+
 
