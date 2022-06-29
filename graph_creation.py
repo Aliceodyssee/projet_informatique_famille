@@ -59,13 +59,13 @@ def get_IndivFamily_DataFrame(file_path='Queen_Eliz_II.ged'):
 
     return df
 
-
+"""
 # Tests
 print(get_IndivFamily_DataFrame().head())
 df = get_IndivFamily_DataFrame()
 df1 = df.set_index('INDI',inplace=False)
 print(df1.at['@I11262@','FAMC'])
-
+"""
 
 
 def get_IndivLinks_DataFrame(file_path='Queen_Eliz_II.ged'):
