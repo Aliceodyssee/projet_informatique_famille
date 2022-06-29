@@ -65,29 +65,6 @@ def find_IndividualElement(first_names,last_name):
 
 
 
-def find_Element(tag):
-    """
-    Gets element of ged with its tag
-
-    Parameters
-    ---
-    tag : str
-        tag of element
-
-    Returns 
-    ---
-    bool 
-        Tells if the individual was found
-    IndividualElement
-        Element corresponding to the tag
-
-    """
-    for element in root_child_elements:
-        if element.get_tag() == tag :
-            return [True, element]
-    return [False, element]
-
-
 def get_Spouse_FamilyElement(Individual):
     """
     Get Spouse FamilyElements of an individual

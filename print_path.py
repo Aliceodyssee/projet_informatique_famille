@@ -30,7 +30,7 @@ links = {'parents' : ('father', 'mother'),
 
         }
 
-def find_Element(tag):
+def find_Element(pointer,file_path='Queen_Eliz_II.ged'):
     """
     Gets element of ged with its tag
 
@@ -45,14 +45,14 @@ def find_Element(tag):
         Tells if the individual was found
     IndividualElement
         Element corresponding to the tag
-
     """
-    file_path = 'Queen_Eliz_II.ged'
+
     gedcom_parser = Parser()
     gedcom_parser.parse_file(file_path)
     root_child_elements = gedcom_parser.get_root_child_elements()
+
     for element in root_child_elements:
-        if element.get_tag() == tag :
+        if element.get_pointer() == pointer:
             return [True, element]
     return [False, element]
 
@@ -73,7 +73,7 @@ def gendered_link(tag, link) :
         link with gender
     """
 
-    indvidual = find_Element(tag)
+    indvidual = find_Element(tag)[1]
     
     if indvidual.get_gender() == "M" :
         return links[links][0]
