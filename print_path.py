@@ -7,7 +7,6 @@ import numpy as np
 import pandas as pd
 import math
 from dijkstar import Graph, find_path
-from explorer_functions import find_Element
 
 
 # Parser
@@ -73,7 +72,7 @@ def gendered_link(tag, link) :
         link with gender
     """
 
-    indvidual = find_Element(tag)[1]
+    if find_Element(tag)[0] == True : indvidual = find_Element(tag)[1]
     
     if indvidual.get_gender() == "M" :
         return links[links][0]
@@ -81,7 +80,7 @@ def gendered_link(tag, link) :
         return links[links][1]
 
 
-def print_path(path) :
+def print_path(shortest_path,v1,v2) :
     """
     Prints interprated path
 
@@ -96,6 +95,7 @@ def print_path(path) :
     int 
 
     """
+    distance, path = shortest_path
     ind, link = path[0]
     print (v2 + "is the" + gendered_link(path[0][0], path[0][1]))
     for i in range (1, len(path)) :
@@ -106,6 +106,7 @@ def print_path(path) :
     # les print s'afficheront sûrement chacun à la ligne
     # il faut trouver une commande qui empêche ça
 
-
+"""
 # Test
 print_path(path[1])
+"""
