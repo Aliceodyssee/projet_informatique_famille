@@ -183,23 +183,23 @@ def get_IndivLinks_DataFrame(file_path='Queen_Eliz_II.ged'):
     return df2
 
 
-
+"""
 # Tests
 pd.set_option('display.max_rows', 50)
 pd.set_option('display.max_columns', None)
 print(get_IndivLinks_DataFrame().head())
+"""
 
 
-
-distances = {'parent' : 1, 
+distances = {'parent' : 2, 
          'spouse' : 1,
-         'sibling' : 1, 
-         'grandparent' : 2,
-         'grandchild' : 2, 
+         'sibling' : 2, 
+         'grandparent' : 3,
+         'grandchild' : 3, 
          'nephew' : 3, 
          'uncle' : 3,
-         'cousin' : 2,
-         'child' : 1
+         'cousin' : 3,
+         'child' : 2
         }
 
 def graph_value(col) :
