@@ -9,3 +9,6 @@ from dijkstar import Graph, find_path
 import explorer_functions
 import graph_creation
 import print_path
+
+
+graph = build_IndGraph()
