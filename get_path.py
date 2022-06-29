@@ -33,6 +33,8 @@ def shortest_path_up(graph, v1, v2) :
 
     processus the path in order to give 
     the precise link between v1 and v2
+
+    returns tuple (distance,list of list with precise link between v1 and v2, v1 not included)
     """
 
     # keep track of what has been visited
