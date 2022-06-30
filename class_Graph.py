@@ -6,7 +6,7 @@ import pandas as pd
 import math
 
 
-class get_graph() :
+class Graph() :
 
     def __init__(self,file_path) :
         self.ged = file_path

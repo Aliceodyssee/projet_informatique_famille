@@ -1,10 +1,15 @@
-from class_get_graph import *
+from class_Graph import *
 
-class get_path() :
+class Path() :
 
     def __init__(self, file_path) :
+
         self.ged = file_path
-        self.graph = get_graph(self.ged).build_IndGraph()
+
+        self.get_graph = Graph(self.ged)
+
+        self.graph = self.get_graph.build_IndGraph()
+
         self.links = {'parent' : ('father', 'mother'), 
          'spouse' : ('husband', 'wife'),
          'sibling' : ('brother', 'sister'), 
@@ -15,9 +20,9 @@ class get_path() :
          'cousin' : ('cousin', 'cousin'),
          'child' : ('son', 'daughter')
         }
-        
-    
-    def shortest_path_up(self, v1, v2) :
+
+
+    def shortest_path(self, v1, v2) :
         """
         Updated version of shortest_path
         Includes family relationship types
@@ -98,7 +103,92 @@ class get_path() :
                     previous = surprevious
                     surprevious = visited[previous][1]
                 return shortest_length, path
+    
+
+
+    def find_Element(self,pointer):
+        """
+        Gets element of ged with its tag
+
+        Parameters
+        ---
+        tag : str
+            tag of element
+
+        Returns 
+        ---
+        bool 
+            Tells if the individual was found
+        IndividualElement
+            Element corresponding to the tag
+        """
+        for element in self.get_graph.parser():
+            if element.get_pointer() == pointer:
+                return [True, element]
+        return [False, element]
 
 
     
+    def gendered_link(self,tag,link) :
+        """
+        Adds gender to family link
+
+        Parameters
+        ---
+        tag : str
+            tag of IndividualElement
+        link : str
+            family link
+        Returns 
+        ---
+        str 
+            link with gender
+        """
+
+        if self.find_Element(tag)[0] : indvidual = self.find_Element(tag)[1]
+        
+        if indvidual.get_gender() == "M" :
+            return self.links[link][0]
+        else :
+            return self.links[link][1]
+
+    
+    def print(self,v1,v2) :
+        """
+        Prints interprated path
+
+        Parameters
+        ---
+        path : list of tuples
+            path between two individuals
+            tuple : (individual tag, family link)
+
+        Returns
+        ---
+        int 
+
+        """
+        _, path = self.shortest_path(v1,v2)
+        ind, link = path[0]
+
+        if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
+        name1, _ = element1.get_name()
+
+        if self.find_Element(v2)[0] : element2 = self.find_Element(v2)[1]
+        name2, _ = element2.get_name()
+
+        print (name2 + " is the " + self.gendered_link(path[0][0], path[0][1]))
+        for i in range (1, len(path)) :
+            ind, link = path[i]
+            if i%3 == 2 :
+                if self.find_Element(ind)[0] : element = self.find_Element(ind)[1]
+                name, _ = element.get_name()
+                print(" of " + name + ", who is the " + self.gendered_link(ind, link))
+            else : print(" of the " + self.gendered_link(ind, link))
+        print (" of " + name1)
+
+        
+
+
+
 
