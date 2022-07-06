@@ -211,6 +211,7 @@ class Path() :
         if shortest_path == None : return None
         length, path = shortest_path
         ind, link = path[0]
+        print(path)
 
         if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
         name1, _ = element1.get_name()
@@ -247,7 +248,12 @@ class Path() :
             """
             path_detail = ""
             path, _,_,length = find_path(self.get_graph.build_dij(),v1,v2)
-            path = path[1:]        
+            path.pop(0)
+            dij_path = copy.deepcopy(path)
+            for i in range(len(path)) :
+                _ ,link = tuple(self.graph[path[i-1]][path[i]])
+                dij_path[i] = (path[i], link)
+            print(dij_path)
 
             if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
             name1, _ = element1.get_name()
@@ -255,9 +261,9 @@ class Path() :
             if self.find_Element(v2)[0] : element2 = self.find_Element(v2)[1]
             name2, _ = element2.get_name()
 
-            path_detail += name2 + " is the " + self.gendered_link(path[0][0], path[0][1])
+            path_detail += name2 + " is the " + self.gendered_link(dij_path[0][0], dij_path[0][1])
             for i in range (1, len(path)) :
-                ind, link = path[i]
+                ind, link = dij_path[i]
                 if i%3 == 2 :
                     if self.find_Element(ind)[0] : element = self.find_Element(ind)[1]
                     name, _ = element.get_name()
