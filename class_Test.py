@@ -12,7 +12,7 @@ class Test() :
         self.graph = Graph(file_path).print()
         self.path = Path(file_path)
         self.set = self.random_couples_set()
-        self.paths, self.distances, self.execution_times = self.comparison_data()
+        self.paths, self.distances, self.execution_times,self.dij_execution_times = self.comparison_data()
     
 
     def random_set(self) :
@@ -38,15 +38,25 @@ class Test() :
         distances = []
         paths = []
         execution_times = []
+        dij_execution_times = []
+
         for i in range(len(self.set)) : 
             start = time.time()
             shortest_path = self.path.get(self.set[i][0],self.set[i][1])
+            end = time.time()
+
+            dij_start = time.time()
+            dij_shortest_path = self.path.get_dij(self.set[i][0],self.set[i][1])
+            dij_end = time.time()
+
             if shortest_path != None :
                 distances += [shortest_path[0]]
                 paths += [shortest_path[1]]
-                end = time.time()
                 execution_times += [end-start]
-        return paths, distances, execution_times
+                dij_execution_times += [dij_end-dij_start]
+
+        return paths, distances, execution_times, dij_execution_times
+
 
 
     def comparison_Dataframe(self) :
@@ -54,14 +64,15 @@ class Test() :
             'Individuals' : self.set,
             'Path' : self.paths,
             'Distance' : self.distances,
-            'Execution time (s)' : self.execution_times})
+            'Execution time (s)' : self.execution_times,
+            'Dijkstar execution time (s)' : self.dij_execution_times})
         df.set_index('Individuals',inplace=True)
         df.sort_values(by='Distance', axis=0, ascending=True, inplace=True, kind='quicksort', na_position='last')
         return df
 
 
     def average(self) :
-        return sum(self.execution_times)/len(self.execution_times)
+        return sum(self.execution_times)/len(self.execution_times), sum(self.dij_execution_times)/len(self.dij_execution_times)
 
     
     def plot_Distance_Time(self) :
