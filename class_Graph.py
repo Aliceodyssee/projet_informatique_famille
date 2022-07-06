@@ -243,5 +243,5 @@ class Graph() :
 
 
     
-    def print_graph(self) :
+    def print(self) :
         return self.build_IndGraph()
