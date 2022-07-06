@@ -4,6 +4,8 @@ import gedcom.tags
 import numpy as np
 import pandas as pd
 import math
+from dijkstar import Graph as dij_Graph, find_path
+import copy
 
 
 class Graph() :
@@ -20,6 +22,7 @@ class Graph() :
          'cousin' : 3,
          'child' : 2
         }
+        self.graph = self.build()
 
 
     def parser(self) :
@@ -215,7 +218,7 @@ class Graph() :
 
 
 
-    def build_IndGraph(self):
+    def build(self):
         """
         Builds a graph in the form of a dictionnary
         
@@ -244,4 +247,13 @@ class Graph() :
 
     
     def print(self) :
-        return self.build_IndGraph()
+        return self.build()
+    
+    def build_dij(self) :
+        dij_graph = dij_Graph()
+        for edge1 in self.graph.keys() :
+            for edge2 in self.graph[edge1].keys() :
+                value,_ = self.graph[edge1][edge2]
+                dij_graph.add_edge(edge1,edge2,value)
+        return dij_graph
+

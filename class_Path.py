@@ -8,7 +8,7 @@ class Path() :
 
         self.get_graph = Graph(self.ged)
 
-        self.graph = self.get_graph.build_IndGraph()
+        self.graph = self.get_graph.build()
 
         self.links = {'parent' : ('father', 'mother'), 
          'spouse' : ('husband', 'wife'),
@@ -230,7 +230,41 @@ class Path() :
         return [length,path_detail]
 
         
+    def get_dij(self,v1,v2) :
+            """
+            Returns interprated path
 
+            Parameters
+            ---
+            path : list of tuples
+                path between two individuals
+                tuple : (individual tag, family link)
+
+            Returns
+            ---
+            int 
+
+            """
+            path_detail = ""
+            path, _,_,length = find_path(self.get_graph.build_dij(),v1,v2)
+            path = path[1:]        
+
+            if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
+            name1, _ = element1.get_name()
+
+            if self.find_Element(v2)[0] : element2 = self.find_Element(v2)[1]
+            name2, _ = element2.get_name()
+
+            path_detail += name2 + " is the " + self.gendered_link(path[0][0], path[0][1])
+            for i in range (1, len(path)) :
+                ind, link = path[i]
+                if i%3 == 2 :
+                    if self.find_Element(ind)[0] : element = self.find_Element(ind)[1]
+                    name, _ = element.get_name()
+                    path_detail += " of " + name + ", who is the " + self.gendered_link(ind, link)
+                else : path_detail += " of the " + self.gendered_link(ind, link)
+            path_detail += " of " + name1 + "."
+            return [length,path_detail]
 
 
 
