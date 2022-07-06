@@ -204,7 +204,7 @@ class Path() :
 
         """
         path_detail = ""
-        _, path = self.shortest_path(v1,v2)
+        length, path = self.shortest_path(v1,v2)
         ind, link = path[0]
 
         if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
@@ -222,7 +222,7 @@ class Path() :
                 path_detail += " of " + name + ", who is the " + self.gendered_link(ind, link)
             else : path_detail += " of the " + self.gendered_link(ind, link)
         path_detail += " of " + name1 + "."
-        return path_detail
+        return [length,path_detail]
 
         
 
