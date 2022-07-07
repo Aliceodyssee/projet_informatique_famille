@@ -94,7 +94,7 @@ class Test() :
 
     def plot_difference(self):
         x = np.arange(1,len(self.difference)+1)
-        plt.plot(x,self.difference)
+        plt.plot(x,self.difference, '+')
         plt.title("Difference in execution time between the naive and Dijkstar algorithms")
         plt.show()
 
