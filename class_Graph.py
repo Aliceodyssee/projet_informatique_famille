@@ -265,4 +265,3 @@ class Graph() :
                 value,_ = self.graph[edge1][edge2]
                 dij_graph.add_edge(edge1,edge2,value)
         return dij_graph
-

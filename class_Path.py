@@ -274,6 +274,3 @@ class Path() :
                 else : path_detail += " of the " + self.gendered_link(ind, link)
             path_detail += " of " + name1 + "."
             return [length,path_detail]
-
-
-

@@ -47,11 +47,12 @@ class Test() :
             shortest_path = self.path.get(self.set[i][0],self.set[i][1])
             end = time.time()
 
-            dij_start = time.time()
-            dij_shortest_path = self.path.get_dij(self.set[i][0],self.set[i][1])
-            dij_end = time.time()
-
             if shortest_path != None :
+
+                dij_start = time.time()
+                dij_shortest_path = self.path.get_dij(self.set[i][0],self.set[i][1])
+                dij_end = time.time()
+
                 distances += [shortest_path[0]]
                 dij_distances += [dij_shortest_path[0]]
                 paths += [shortest_path[1]]
@@ -84,6 +85,7 @@ class Test() :
     def plot_Distance_Time(self) :
         a,b = np.polyfit(self.distances,self.execution_times,1)
         plt.scatter(self.distances,self.execution_times,marker='+')
+        plt.scatter(self.dij_distances,self.dij_execution_times, marker='+',color='p')
         plt.plot(self.distances,a * np.array(self.distances) + b, color='r', linestyle='--', linewidth=0.5)
         plt.axis('equal')
         plt.xlabel('Path length')
@@ -98,4 +100,3 @@ class Test() :
         plt.plot(x,self.difference, '+')
         plt.title("Difference in execution time between the naive and Dijkstar algorithms")
         plt.show()
-
