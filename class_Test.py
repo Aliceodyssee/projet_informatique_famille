@@ -96,6 +96,14 @@ class Test() :
 
 
     def plot_difference(self):
+
+        rate = 0
+        for k in self.difference:
+            if k > 0 :
+                rate += 1
+        
+        print(f"In {rate/len(self.difference)*100}% of cases, the Dijkstra algorithm is faster.")
+
         a,b = np.polyfit(self.distances,self.difference,1)
         plt.scatter(self.distances,self.difference, marker='+')
         plt.hlines(y=0,xmin=min(self.distances),xmax=max(self.distances),color='r')
