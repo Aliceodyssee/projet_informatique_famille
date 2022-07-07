@@ -241,16 +241,6 @@ class Graph() :
         return g
 
 
-
-    def print_DataFrame(self) :
-        return self.get_IndivLinks_DataFrame()
-
-
-    
-    def print(self) :
-        return self.build()
-
-
     def build_dij(self) :
         dij_graph = dij_Graph()
         for edge1 in self.graph.keys() :
