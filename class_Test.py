@@ -19,7 +19,7 @@ class Test() :
         keys = list(self.graph.keys())
         set = []
         j = 0
-        while j < 2 :
+        while j < 5 :
             i = random.randint(0,len(keys)-1)
             set += [keys[i]]
             j += 1
