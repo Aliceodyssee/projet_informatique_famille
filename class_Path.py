@@ -246,12 +246,17 @@ class Path() :
         path_detail += name2 + " is the " + self.gendered_link(path[0][0], path[0][1])
         for i in range (1,len(path)) :
             [ind1, link1] = path[i]
-            [ind2, _] = path[i-1]
+            if i == 0 :
+                ind2 = v2
+            else :
+                [ind2, _] = path[i-1]
+            
             if i%3 == 2 :
                 if self.find_Element(ind1)[0] : element = self.find_Element(ind1)[1]
                 name, _ = element.get_name()
                 path_detail += " of " + name + ", who is the " + self.gendered_link(ind2, link1)
-            else : path_detail += " of the " + self.gendered_link(ind, link)
+                
+            else : path_detail += " of the " + self.gendered_link(ind2, link1)
         path_detail += " of " + name1 + "."
         return [length,path_detail]
 
