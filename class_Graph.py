@@ -217,9 +217,11 @@ class Graph() :
         
         """
         link = ""
-        for i in range(len(str(col))-1) :
-            if col[i] != "_" :
-                link += col[i].lower()
+        for i in range(len(str(col))) :
+            letter = col[i]
+            if not letter.isdigit() :
+                if letter != "_" :
+                    link += letter.lower()
         d = self.distances[link]
         return d,link
     
