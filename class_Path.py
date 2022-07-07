@@ -155,7 +155,7 @@ class Path() :
             return self.links[link][1]
 
     
-    def print_table(self,v1,v2):
+    def get_table(self,v1,v2):
         shortest_path = self.shortest_path(v1,v2)
         if shortest_path == None : 
             return 'No path'
@@ -202,15 +202,11 @@ class Path() :
         if self.find_Element(v2)[0] : element2 = self.find_Element(v2)[1]
         name2, _ = element2.get_name()
 
-        path_detail += name2 + " is the " + self.gendered_link(path[0][0], path[0][1])
-        for i in range (1, len(path)) :
-            [ind, link] = path[i]
-            if i%3 == 2 :
-                if self.find_Element(ind)[0] : element = self.find_Element(ind)[1]
-                name, _ = element.get_name()
-                path_detail += " of " + name + ", who is the " + self.gendered_link(ind, link)
-            else : path_detail += " of the " + self.gendered_link(ind, link)
-        path_detail += " of " + name1 + "."
+        path_detail += name2 + " is "
+        for i in range (1, len(path)+1) :
+            [ind, link] = path[len(path)-i]
+            path_detail += "the " + self.gendered_link(ind, link) + " of "
+        path_detail += name1 + "."
         return [length,path_detail]
 
         
