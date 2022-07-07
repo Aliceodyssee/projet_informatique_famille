@@ -21,15 +21,6 @@ class Graph() :
          'uncle' : 3,
          'cousin' : 3,
          'child' : 2}
-        self.fool_distances = {'parent' : 1, 
-         'spouse' : 1,
-         'sibling' : 1, 
-         'grandparent' : 1,
-         'grandchild' : 1, 
-         'nephew' : 1, 
-         'uncle' : 1,
-         'cousin' : 1,
-         'child' : 1}
         self.graph = self.build()
 
 
