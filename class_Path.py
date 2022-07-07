@@ -146,7 +146,8 @@ class Path() :
             link with gender
         """
 
-        if self.find_Element(tag)[0] : indvidual = self.find_Element(tag)[1]
+        if self.find_Element(tag)[0] : 
+            indvidual = self.find_Element(tag)[1]
         
         if indvidual.get_gender() == "M" :
             return self.links[link][0]
@@ -176,20 +177,20 @@ class Path() :
         ind, link = path[0]
 
         if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
-        name1, _ = element1.get_name()
+        name1, surname1 = element1.get_name()
 
         if self.find_Element(v2)[0] : element2 = self.find_Element(v2)[1]
-        name2, _ = element2.get_name()
+        name2, surname2 = element2.get_name()
 
-        print (name2 + " is the " + self.gendered_link(path[0][0], path[0][1]))
+        print (name2 + surname2 + " is the " + self.gendered_link(path[0][0], path[0][1]))
         for i in range (1, len(path)) :
             ind, link = path[i]
             if i%3 == 2 :
                 if self.find_Element(ind)[0] : element = self.find_Element(ind)[1]
-                name, _ = element.get_name()
-                print(" of " + name + ", who is the " + self.gendered_link(ind, link))
+                name, surname = element.get_name()
+                print(" of " + name + surname + ", who is the " + self.gendered_link(ind, link))
             else : print(" of the " + self.gendered_link(ind, link))
-        print (" of " + name1)
+        print (" of " + name1 + surname1)
 
 
     def get(self,v1,v2) :
