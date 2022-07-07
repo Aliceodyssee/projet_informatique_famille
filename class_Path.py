@@ -1,4 +1,5 @@
 from class_Graph import *
+import time
 
 class Path() :
 
@@ -145,7 +146,8 @@ class Path() :
             link with gender
         """
 
-        if self.find_Element(tag)[0] : indvidual = self.find_Element(tag)[1]
+        if self.find_Element(tag)[0] : 
+            indvidual = self.find_Element(tag)[1]
         
         if indvidual.get_gender() == "M" :
             return self.links[link][0]
@@ -195,20 +197,20 @@ class Path() :
         ind, link = path[0]
 
         if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
-        name1, _ = element1.get_name()
+        name1, surname1 = element1.get_name()
 
         if self.find_Element(v2)[0] : element2 = self.find_Element(v2)[1]
-        name2, _ = element2.get_name()
+        name2, surname2 = element2.get_name()
 
-        print (name2 + " is the " + self.gendered_link(path[0][0], path[0][1]))
+        print (name2 + surname2 + " is the " + self.gendered_link(path[0][0], path[0][1]))
         for i in range (1, len(path)) :
             ind, link = path[i]
             if i%3 == 2 :
                 if self.find_Element(ind)[0] : element = self.find_Element(ind)[1]
-                name, _ = element.get_name()
-                print(" of " + name + ", who is the " + self.gendered_link(ind, link))
+                name, surname = element.get_name()
+                print(" of " + name + surname + ", who is the " + self.gendered_link(ind, link))
             else : print(" of the " + self.gendered_link(ind, link))
-        print (" of " + name1)
+        print (" of " + name1 + surname1)
 
 
     def get(self,v1,v2) :
@@ -229,7 +231,6 @@ class Path() :
         shortest_path = self.shortest_path(v1,v2)
         if shortest_path == None : return None
         length, path = shortest_path
-        ind, link = path[0]
 
         if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
         name1, _ = element1.get_name()
@@ -265,6 +266,7 @@ class Path() :
             int 
 
             """
+            #begin = time.time()
             path_detail = ""
             dij_path, _,_,length = find_path(self.get_graph.build_dij(),v1,v2)
             path = copy.deepcopy(dij_path)
@@ -272,6 +274,8 @@ class Path() :
                 _ ,link = self.graph[dij_path[i-1]][dij_path[i]]
                 path[i] = [dij_path[i], link]
             path.pop(0)
+            #end = time.time()
+            #print(end-begin)
 
             if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
             name1, _ = element1.get_name()
@@ -289,6 +293,3 @@ class Path() :
                 else : path_detail += " of the " + self.gendered_link(ind, link)
             path_detail += " of " + name1 + "."
             return [length,path_detail]
-
-
-

@@ -20,8 +20,16 @@ class Graph() :
          'nephew' : 3, 
          'uncle' : 3,
          'cousin' : 3,
-         'child' : 2
-        }
+         'child' : 2}
+        self.fool_distances = {'parent' : 1, 
+         'spouse' : 1,
+         'sibling' : 1, 
+         'grandparent' : 1,
+         'grandchild' : 1, 
+         'nephew' : 1, 
+         'uncle' : 1,
+         'cousin' : 1,
+         'child' : 1}
         self.graph = self.build()
 
 
@@ -248,7 +256,8 @@ class Graph() :
     
     def print(self) :
         return self.build()
-    
+
+
     def build_dij(self) :
         dij_graph = dij_Graph()
         for edge1 in self.graph.keys() :
@@ -256,4 +265,3 @@ class Graph() :
                 value,_ = self.graph[edge1][edge2]
                 dij_graph.add_edge(edge1,edge2,value)
         return dij_graph
-
