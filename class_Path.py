@@ -153,6 +153,26 @@ class Path() :
             return self.links[link][1]
 
     
+    def print_table(self,v1,v2):
+        shortest_path = self.shortest_path(v1,v2)
+        if shortest_path == None : 
+            return 'No path'
+        _, path = shortest_path
+
+        individuals = []
+        links = []
+        for i in range (len(path)):
+            individuals.append(path[i][0])
+            links.append(path[i][1])
+        
+        df = pd.DataFrame({
+            "Name" : individuals,
+            "Family link" : links
+        })
+        df.set_index('Individuals',inplace=True)
+        return df
+
+
     def print(self,v1,v2) :
         """
         Prints interprated path
@@ -197,13 +217,12 @@ class Path() :
 
         Parameters
         ---
-        path : list of tuples
-            path between two individuals
-            tuple : (individual tag, family link)
+        v1 : IndividualElement
+        v2 : IndividualElement
 
         Returns
         ---
-        int 
+         
 
         """
         path_detail = ""
