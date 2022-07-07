@@ -1,89 +1,3 @@
-# import igraph
-# from igraph import Graph, EdgeSeq
-# nr_vertices = 25
-# v_label = list(map(str, range(nr_vertices)))
-# G = Graph.Tree(nr_vertices, 2) # 2 stands for children number
-# lay = G.layout('rt')
-
-# position = {k: lay[k] for k in range(nr_vertices)}
-# Y = [lay[k][1] for k in range(nr_vertices)]
-# M = max(Y)
-
-# es = EdgeSeq(G) # sequence of edges
-# E = [e.tuple for e in G.es] # list of edges
-
-# L = len(position)
-# Xn = [position[k][0] for k in range(L)]
-# Yn = [2*M-position[k][1] for k in range(L)]
-# Xe = []
-# Ye = []
-# for edge in E:
-#     Xe+=[position[edge[0]][0],position[edge[1]][0], None]
-#     Ye+=[2*M-position[edge[0]][1],2*M-position[edge[1]][1], None]
-
-# labels = v_label
-   
-# import plotly.graph_objects as go
-
-# fig = go.Figure()
-# fig.add_trace(go.Scatter(x=Xe,
-#                    y=Ye,
-#                    mode='lines',
-#                    line=dict(color='rgb(210,210,210)', width=1),
-#                    hoverinfo='none'
-
-#                    ))
-# fig.add_trace(go.Scatter(x=Xn,
-#                   y=Yn,
-#                   mode='markers',
-#                   name='bla',
-#                   marker=dict(symbol='circle-dot',
-#                                 size=18,
-#                                 color='#6175c1',    #'#DB4551',
-#                                 line=dict(color='rgb(50,50,50)', width=1)
-#                                 ),
-#                   text=labels,
-#                   hoverinfo='text',
-#                   opacity=0.8
-#                   ))
-
-# def make_annotations(pos, text, font_size=10, font_color='rgb(250,250,250)'):
-#     L=len(pos)
-#     if len(text)!=L:
-#         raise ValueError('The lists pos and text must have the same len')
-#     annotations = []
-#     for k in range(L):
-#         annotations.append(
-#             dict(
-#                 text=labels[k], # or replace labels with a different list for the text within the circle
-#                 x=pos[k][0], y=2*M-position[k][1],
-#                 xref='x1', yref='y1',
-#                 font=dict(color=font_color, size=font_size),
-#                 showarrow=False)
-#         )
-#     return annotations
-
-
-
-# axis = dict(showline=False, # hide axis line, grid, ticklabels and  title
-#             zeroline=False,
-#             showgrid=False,
-#             showticklabels=False,
-#             )
-
-# fig.update_layout(title= 'chemin généalogique',
-#               annotations=make_annotations(position, v_label),
-#               font_size=12,
-#               showlegend=False,
-#               xaxis=axis,
-#               yaxis=axis,
-#               margin=dict(l=40, r=40, b=85, t=100),
-#               hovermode='closest',
-#               plot_bgcolor='rgb(248,248,248)'
-#               )
-# fig.show()
-
-
 
 from treelib import Node, Tree 
 tree = Tree() 
@@ -94,3 +8,90 @@ tree.create_node("Diane", "diane" , parent="jane")
 tree.create_node("Mary", "mary" , parent="diane") 
 tree.create_node("Mark", "mark" , parent="jane") 
 tree.show()
+
+def print(self,v1,v2) :
+        """
+        Prints interprated path with visual tree
+
+        Parameters
+        ---
+        path : list of tuples
+            path between two individuals
+            tuple : (individual tag, family link)
+
+        Returns
+        ---
+        int 
+
+        """
+
+        shortest_path = self.shortest_path(v1,v2)
+        if shortest_path == None : return 'No path'
+        _, path = shortest_path
+        ind, link = path[0]
+
+        if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
+        name1, surname1 = element1.get_name()
+
+        if self.find_Element(v2)[0] : element2 = self.find_Element(v2)[1]
+        name2, surname2 = element2.get_name()
+
+
+
+
+        print (name2 + surname2 + " is the " + self.gendered_link(path[0][0], path[0][1]))
+        for i in range (1, len(path)) :
+            ind, link = path[i]
+            if i%3 == 2 :
+                if self.find_Element(ind)[0] : element = self.find_Element(ind)[1]
+                name, surname = element.get_name()
+                print(" of " + name + surname + ", who is the " + self.gendered_link(ind, link))
+            else : print(" of the " + self.gendered_link(ind, link))
+        print (" of " + name1 + surname1)
+
+        tree = Tree()
+        for i in range(1,len(path)):
+            if i%3 == 2 :
+                if self.find_Element(ind)[0] : element = self.find_Element(ind)[1]
+                name, surname = element.get_name()
+                print(" of " + name + surname + ", who is the " + self.gendered_link(ind, link))
+            else : print(" of the " + self.gendered_link(ind, link))
+
+
+def print(self,v1,v2) :
+        """
+        Prints interprated path
+
+        Parameters
+        ---
+        path : list of tuples
+            path between two individuals
+            tuple : (individual tag, family link)
+
+        Returns
+        ---
+        int 
+
+        """
+
+        shortest_path = self.shortest_path(v1,v2)
+        if shortest_path == None : return 'No path'
+        _, path = shortest_path
+        ind, link = path[0]
+
+        if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
+        name1, surname1 = element1.get_name()
+
+        if self.find_Element(v2)[0] : element2 = self.find_Element(v2)[1]
+        name2, surname2 = element2.get_name()
+
+        print (name2 + surname2 + " is the " + self.gendered_link(path[0][0], path[0][1]))
+        for i in range (1, len(path)) :
+            ind, link = path[i]
+            if i%3 == 2 :
+                if self.find_Element(ind)[0] : element = self.find_Element(ind)[1]
+                name, surname = element.get_name()
+                print(" of " + name + surname + ", who is the " + self.gendered_link(ind, link))
+            else : print(" of the " + self.gendered_link(ind, link))
+        print (" of " + name1 + surname1)
+
