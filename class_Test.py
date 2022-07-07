@@ -71,7 +71,7 @@ class Test() :
             'Dijkstar distance' : self.dij_distances,
             'Execution time (s)' : self.execution_times,
             'Dijkstar execution time (s)' : self.dij_execution_times, 
-            'Difference in execution time' : self.difference })
+            'Difference of execution time (s)' : self.difference })
         df.set_index('Individuals',inplace=True)
         df.sort_values(by='Distance', axis=0, ascending=True, inplace=True, kind='quicksort', na_position='last')
         return df
@@ -92,9 +92,10 @@ class Test() :
         plt.text(50, 50, 'y = ' + '{:.2f}'.format(b) + ' + {:.2f}'.format(a) + 'x', size=14)
         plt.show()
 
+
     def plot_difference(self):
         x = np.arange(1,len(self.difference)+1)
-        plt.plot(x,self.difference)
+        plt.plot(x,self.difference,'+')
         plt.title("Difference in execution time between the naive and Dijkstar algorithms")
         plt.show()
 
