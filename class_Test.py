@@ -12,7 +12,7 @@ class Test() :
         self.graph = Graph(file_path).print()
         self.path = Path(file_path)
         self.set = self.random_couples_set()
-        self.paths, self.distances, self.execution_times,self.dij_execution_times = self.comparison_data()
+        self.paths, self.distances, self.execution_times,self.dij_execution_times, self.difference = self.comparison_data()
     
 
     def random_set(self) :
@@ -39,6 +39,7 @@ class Test() :
         paths = []
         execution_times = []
         dij_execution_times = []
+        difference = []
 
         for i in range(len(self.set)) : 
             start = time.time()
@@ -54,8 +55,9 @@ class Test() :
                 paths += [shortest_path[1]]
                 execution_times += [end-start]
                 dij_execution_times += [dij_end-dij_start]
+                difference += [execution_times[-1]-dij_execution_times[-1]]
 
-        return paths, distances, execution_times, dij_execution_times
+        return paths, distances, execution_times, dij_execution_times, difference
 
 
 
@@ -65,7 +67,8 @@ class Test() :
             'Path' : self.paths,
             'Distance' : self.distances,
             'Execution time (s)' : self.execution_times,
-            'Dijkstar execution time (s)' : self.dij_execution_times})
+            'Dijkstar execution time (s)' : self.dij_execution_times, 
+            'Difference in execution time' : self.difference })
         df.set_index('Individuals',inplace=True)
         df.sort_values(by='Distance', axis=0, ascending=True, inplace=True, kind='quicksort', na_position='last')
         return df
@@ -84,5 +87,11 @@ class Test() :
         plt.ylabel('Execution time (seconds)')
         plt.title("Execution time in terms of path length")
         plt.text(50, 50, 'y = ' + '{:.2f}'.format(b) + ' + {:.2f}'.format(a) + 'x', size=14)
+        plt.show()
+
+    def plot_difference(self):
+        x = np.arange(1,len(self.difference)+1)
+        plt.plot(x,self.difference)
+        plt.title("Difference in execution time between the naive and Dijkstar algorithms")
         plt.show()
 
