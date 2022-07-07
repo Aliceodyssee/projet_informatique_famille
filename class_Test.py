@@ -98,7 +98,7 @@ class Test() :
     def plot_difference(self):
         a,b = np.polyfit(self.distances,self.difference,1)
         plt.scatter(self.distances,self.difference, marker='+')
-        plt.hlines(y=0,color='r')
+        plt.hlines(y=0,min(self.distances),max(self.distances),color='r')
         plt.plot(self.distances,a * np.array(self.difference) + b, color='r', linestyle='--', linewidth=0.5)
         plt.title("Difference in execution time between the naive and Dijkstar algorithms")
         plt.show()
