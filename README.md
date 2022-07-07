@@ -22,4 +22,9 @@ Dijkstar
 https://pypi.org/project/Dijkstar/
 
 
+Exemples de paires dont on peut vérifier le lien de parenté :
+John Beaufort / Henry VII
+Elizabeth II / George V
+
+
 
