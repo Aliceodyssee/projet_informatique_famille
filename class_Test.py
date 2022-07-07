@@ -85,7 +85,7 @@ class Test() :
     def plot_Distance_Time(self) :
         a,b = np.polyfit(self.distances,self.execution_times,1)
         plt.scatter(self.distances,self.execution_times,marker='+')
-        plt.scatter(self.dij_distances,self.dij_execution_times, marker='+',color='p')
+        plt.scatter(self.dij_distances,self.dij_execution_times, marker='+',color='g')
         plt.plot(self.distances,a * np.array(self.distances) + b, color='r', linestyle='--', linewidth=0.5)
         plt.axis('equal')
         plt.xlabel('Path length')
