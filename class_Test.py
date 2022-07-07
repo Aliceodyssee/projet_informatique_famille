@@ -86,10 +86,11 @@ class Test() :
     
     def plot_Distance_Time(self) :
         a,b = np.polyfit(self.distances,self.execution_times,1)
-        plt.scatter(self.distances,self.execution_times,marker='o')
-        plt.scatter(self.dij_distances,self.dij_execution_times, marker='+',color='g')
+        plt.scatter(self.distances,self.execution_times,marker='o', label = 'Naive version')
+        plt.scatter(self.dij_distances,self.dij_execution_times, marker='+',color='g', label = "Dijkstra")
         plt.plot(self.distances,a * np.array(self.distances) + b, color='r', linestyle='--', linewidth=0.5)
         plt.axis('equal')
+        plt.legend()
         plt.xlabel('Path length')
         plt.ylabel('Execution time (seconds)')
         plt.title("Execution time in terms of path length")
