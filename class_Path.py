@@ -168,8 +168,9 @@ class Path() :
             if self.find_Element(ind)[0] : 
                 element = self.find_Element(ind)[1]
                 name, surname = element.get_name()
-                individuals.append(name + surname)
-                links.append(path[i][1])
+                individuals.append(name + ' ' + surname)
+
+                links.append(path.gendered_link(element, path[i][1]))
         
         df = pd.DataFrame({
             "Name" : individuals,
