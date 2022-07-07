@@ -211,7 +211,6 @@ class Path() :
         shortest_path = self.shortest_path(v1,v2)
         if shortest_path == None : return None
         length, path = shortest_path
-        ind, link = path[0]
 
         if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
         name1, _ = element1.get_name()

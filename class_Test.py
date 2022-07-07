@@ -19,7 +19,7 @@ class Test() :
         keys = list(self.graph.keys())
         set = []
         j = 0
-        while j < 3 :
+        while j < 15 :
             i = random.randint(0,len(keys)-1)
             set += [keys[i]]
             j += 1
@@ -84,7 +84,7 @@ class Test() :
     
     def plot_Distance_Time(self) :
         a,b = np.polyfit(self.distances,self.execution_times,1)
-        plt.scatter(self.distances,self.execution_times,marker='+')
+        plt.scatter(self.distances,self.execution_times,marker='o')
         plt.scatter(self.dij_distances,self.dij_execution_times, marker='+',color='g')
         plt.plot(self.distances,a * np.array(self.distances) + b, color='r', linestyle='--', linewidth=0.5)
         plt.axis('equal')
@@ -96,7 +96,9 @@ class Test() :
 
 
     def plot_difference(self):
-        x = np.arange(1,len(self.difference)+1)
-        plt.plot(x,self.difference, '+')
+        a,b = np.polyfit(self.distances,self.difference,1)
+        plt.scatter(self.distances,self.difference, marker='+')
+        plt.hlines(y=0,color='r')
+        plt.plot(self.distances,a * np.array(self.difference) + b, color='r', linestyle='--', linewidth=0.5)
         plt.title("Difference in execution time between the naive and Dijkstar algorithms")
         plt.show()
