@@ -55,7 +55,7 @@ class Test() :
 
                 distances += [shortest_path[0]]
                 dij_distances += [dij_shortest_path[0]]
-                paths += [shortest_path[1]]
+                paths += [dij_shortest_path[1]]
                 execution_times += [end-start]
                 dij_execution_times += [dij_end-dij_start]
                 difference += [execution_times[-1]-dij_execution_times[-1]]

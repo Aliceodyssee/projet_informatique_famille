@@ -282,9 +282,10 @@ class Path() :
             dij_path, _,_,length = find_path(self.get_graph.build_dij(),v1,v2)
             path = copy.deepcopy(dij_path)
             for i in range(1,len(path)) :
-                _ ,link = self.graph[dij_path[i]][dij_path[i-1]]
+                _ ,link = self.graph[dij_path[i-1]][dij_path[i]]
                 path[i] = [dij_path[i], link]
             path.pop(0)
+            print(path)
             #end = time.time()
             #print(end-begin)
 
@@ -294,14 +295,14 @@ class Path() :
             if self.find_Element(v2)[0] : element2 = self.find_Element(v2)[1]
             name2, _ = element2.get_name()
 
-            path_detail += name2 + " is the " + self.gendered_link(path[0][0], path[0][1])
+            path_detail += name2 + " is the " + self.gendered_link(v2,path[0][1])
             for i in range (1,len(path)) :
                 [ind1, link1] = path[i]
                 [ind2, _] = path[i-1]
                 if i%3 == 2 :
                     if self.find_Element(ind1)[0] : element = self.find_Element(ind1)[1]
                     name, _ = element.get_name()
-                    path_detail += " of " + name + ", who is the " + self.gendered_link(ind2, link1)
+                    path_detail += " of " + name + ", who is the " + self.gendered_link(ind1, link1)
                 else : path_detail += " of the " + self.gendered_link(ind2, link)
             path_detail += " of " + name1 + "."
             return [length,path_detail]
