@@ -93,7 +93,7 @@ class Test() :
         plt.xlabel('Path length')
         plt.ylabel('Execution time (seconds)')
         plt.title("Execution time in terms of path length")
-        plt.text(50, 50, 'y = ' + '{:.2f}'.format(b) + ' + {:.2f}'.format(a) + 'x', size=14)
+        plt.text(4, 10, 'y = ' + '{:.2f}'.format(b) + ' + {:.2f}'.format(a) + 'x', size=14)
         plt.show()
 
 
@@ -109,6 +109,5 @@ class Test() :
         a,b = np.polyfit(self.distances,self.difference,1)
         plt.scatter(self.distances,self.difference, marker='+')
         plt.hlines(y=0,xmin=min(self.distances),xmax=max(self.distances),color='r')
-        plt.plot(self.distances,a * np.array(self.difference) + b, color='r', linestyle='--', linewidth=0.5)
         plt.title("Difference in execution time between the naive and Dijkstar algorithms")
         plt.show()
