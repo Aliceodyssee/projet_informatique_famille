@@ -170,7 +170,7 @@ class Path() :
                 name, surname = element.get_name()
                 individuals.append(name + ' ' + surname)
 
-                links.append(path.gendered_link(element, path[i][1]))
+                links.append(self.gendered_link(element, path[i][1]))
         
         df = pd.DataFrame({
             "Name" : individuals,
