@@ -12,7 +12,7 @@ class Test() :
         self.graph = Graph(file_path).print()
         self.path = Path(file_path)
         self.set = self.random_couples_set()
-        self.paths, self.distances, self.execution_times,self.dij_execution_times, self.difference = self.comparison_data()
+        self.paths, self.distances, self.dij_distances, self.execution_times,self.dij_execution_times, self.difference = self.comparison_data()
     
 
     def random_set(self) :
@@ -36,6 +36,7 @@ class Test() :
 
     def comparison_data(self) :
         distances = []
+        dij_distances = []
         paths = []
         execution_times = []
         dij_execution_times = []
@@ -52,12 +53,13 @@ class Test() :
 
             if shortest_path != None :
                 distances += [shortest_path[0]]
+                dij_distances += [dij_shortest_path[0]]
                 paths += [shortest_path[1]]
                 execution_times += [end-start]
                 dij_execution_times += [dij_end-dij_start]
                 difference += [execution_times[-1]-dij_execution_times[-1]]
 
-        return paths, distances, execution_times, dij_execution_times, difference
+        return paths, distances, dij_distances, execution_times, dij_execution_times, difference
 
 
 
@@ -66,6 +68,7 @@ class Test() :
             'Individuals' : self.set,
             'Path' : self.paths,
             'Distance' : self.distances,
+            'Dijkstar distance' : self.dij_distances,
             'Execution time (s)' : self.execution_times,
             'Dijkstar execution time (s)' : self.dij_execution_times, 
             'Difference in execution time' : self.difference })
