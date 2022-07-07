@@ -12,6 +12,7 @@ class Test() :
         self.graph = Graph(file_path).print()
         self.path = Path(file_path)
         self.set = self.random_couples_set()
+        self.data_set = [['@I173@','@I6452@'],['@I10994@', '@I8418@'],['@I903@','@I895@'],['@I2239@','@I2243@'],['@I10105@','@I6794@']]
         self.paths, self.distances, self.dij_distances, self.execution_times,self.dij_execution_times, self.difference = self.comparison_data()
     
 
@@ -42,15 +43,16 @@ class Test() :
         dij_execution_times = []
         difference = []
 
-        for i in range(len(self.set)) : 
+        for i in range(len(self.data_set)) : 
             start = time.time()
-            shortest_path = self.path.get(self.set[i][0],self.set[i][1])
+            shortest_path = self.path.get(self.data_set[i][0],self.data_set[i][1])
             end = time.time()
 
             if shortest_path != None :
 
                 dij_start = time.time()
-                dij_shortest_path = self.path.get_dij(self.set[i][0],self.set[i][1])
+                #dij_shortest_path = self.path.get_dij(self.set[i][0],self.set[i][1])
+                dij_shortest_path = self.path.get_dij(self.data_set[i][0],self.data_set[i][1])
                 dij_end = time.time()
 
                 distances += [shortest_path[0]]
