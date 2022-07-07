@@ -9,7 +9,7 @@ class Test() :
     def __init__(self,file_path) :
 
         self.ged = file_path
-        self.graph = Graph(file_path).print()
+        self.graph = Graph(file_path).build()
         self.path = Path(file_path)
         self.set = self.random_couples_set()
         self.data_set = [['@I173@','@I6452@'],['@I10994@', '@I8418@'],['@I903@','@I895@'],['@I2239@','@I2243@'],['@I10105@','@I6794@']]
