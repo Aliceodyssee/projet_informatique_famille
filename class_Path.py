@@ -247,7 +247,7 @@ class Path() :
             int 
 
             """
-            begin = time.time()
+            #begin = time.time()
             path_detail = ""
             dij_path, _,_,length = find_path(self.get_graph.build_dij(),v1,v2)
             path = copy.deepcopy(dij_path)
@@ -255,8 +255,8 @@ class Path() :
                 _ ,link = self.graph[dij_path[i-1]][dij_path[i]]
                 path[i] = [dij_path[i], link]
             path.pop(0)
-            end = time.time()
-            print(end-begin)
+            #end = time.time()
+            #print(end-begin)
 
             if self.find_Element(v1)[0] : element1 = self.find_Element(v1)[1]
             name1, _ = element1.get_name()
