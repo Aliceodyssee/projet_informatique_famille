@@ -164,7 +164,8 @@ class Path() :
         individuals = []
         links = []
         for i in range (len(path)):
-            individuals.append(path[i][0])
+            (name,surname) = path[i][0].get_name()
+            individuals.append(name + surname)
             links.append(path[i][1])
         
         df = pd.DataFrame({
