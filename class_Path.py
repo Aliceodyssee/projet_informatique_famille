@@ -164,15 +164,18 @@ class Path() :
         individuals = []
         links = []
         for i in range (len(path)):
-            (name,surname) = path[i][0].get_name()
-            individuals.append(name + surname)
-            links.append(path[i][1])
+            ind, _ = path[i]
+            if self.find_Element(ind)[0] : 
+                element = self.find_Element(ind)[1]
+                name, surname = element.get_name()
+                individuals.append(name + surname)
+                links.append(path[i][1])
         
         df = pd.DataFrame({
             "Name" : individuals,
             "Family link" : links
         })
-        df.set_index('Individuals',inplace=True)
+        df.set_index('Name',inplace=True)
         return df
 
 
@@ -242,11 +245,11 @@ class Path() :
         path_detail += name2 + " is the " + self.gendered_link(path[0][0], path[0][1])
         for i in range (1,len(path)) :
             [ind1, link1] = path[i]
-            [ind2, link2] = path[i-1]
+            [ind2, _] = path[i-1]
             if i%3 == 2 :
-                if self.find_Element(ind)[0] : element = self.find_Element(ind)[1]
+                if self.find_Element(ind1)[0] : element = self.find_Element(ind1)[1]
                 name, _ = element.get_name()
-                path_detail += " of " + name + ", who is the " + self.gendered_link(ind, link)
+                path_detail += " of " + name + ", who is the " + self.gendered_link(ind2, link1)
             else : path_detail += " of the " + self.gendered_link(ind, link)
         path_detail += " of " + name1 + "."
         return [length,path_detail]
@@ -286,12 +289,13 @@ class Path() :
             name2, _ = element2.get_name()
 
             path_detail += name2 + " is the " + self.gendered_link(path[0][0], path[0][1])
-            for i in range (1, len(path)) :
-                [ind, link] = path[i]
+            for i in range (1,len(path)) :
+                [ind1, link1] = path[i]
+                [ind2, _] = path[i-1]
                 if i%3 == 2 :
-                    if self.find_Element(ind)[0] : element = self.find_Element(ind)[1]
+                    if self.find_Element(ind1)[0] : element = self.find_Element(ind1)[1]
                     name, _ = element.get_name()
-                    path_detail += " of " + name + ", who is the " + self.gendered_link(ind, link)
+                    path_detail += " of " + name + ", who is the " + self.gendered_link(ind2, link1)
                 else : path_detail += " of the " + self.gendered_link(ind, link)
             path_detail += " of " + name1 + "."
             return [length,path_detail]
