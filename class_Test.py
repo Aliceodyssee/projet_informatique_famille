@@ -12,7 +12,7 @@ class Test() :
         self.graph = Graph(file_path).build()
         self.path = Path(file_path)
         self.set = self.random_couples_set()
-        self.data_set = [['@I173@','@I6452@'],['@I10994@', '@I8418@'],['@I903@','@I895@'],['@I2239@','@I2243@'],['@I10105@','@I6794@']]
+        self.data_set = [['@I173@','@I6452@'],['@I10994@','@I8418@'],['@I903@','@I895@'],['@I2239@','@I2243@'],['@I10105@','@I6794@'],['@I6214@','@I6225@'],['@I8709@','@I8723@'],['@I10914@','@I8821@'],['@I3139@','@I3014@'],['@I6013@','@I2181@'],['@I11247@','@I11232@'],['@I7488@','@I7479@'],['@I8359@','@I8944@'],['@I9383@','@I7501@']]
         self.paths, self.distances, self.dij_distances, self.execution_times,self.dij_execution_times, self.difference = self.comparison_data()
     
 
@@ -47,7 +47,7 @@ class Test() :
             start = time.time()
             shortest_path = self.path.get(self.data_set[i][0],self.data_set[i][1])
             end = time.time()
-
+            #print(self.data_set[i])
             if shortest_path != None :
 
                 dij_start = time.time()
@@ -68,7 +68,7 @@ class Test() :
 
     def comparison_Dataframe(self) :
         df = pd.DataFrame({
-            'Individuals' : self.set,
+            'Individuals' : self.data_set,
             'Path' : self.paths,
             'Distance' : self.distances,
             'Dijkstar distance' : self.dij_distances,
