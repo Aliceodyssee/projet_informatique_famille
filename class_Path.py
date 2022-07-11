@@ -154,28 +154,6 @@ class Path() :
         else :
             return self.links[link][1]
 
-    
-    def get_table(self,v1,v2):
-        shortest_path = self.shortest_path(v1,v2)
-        if shortest_path == None : 
-            return 'No path'
-        _, path = shortest_path
-
-        individuals = []
-        links = []
-        for i in range (len(path)):
-            (name,surname) = path[i][0].get_name()
-            individuals.append(name + surname)
-            links.append(path[i][1])
-        
-        df = pd.DataFrame({
-            "Name" : individuals,
-            "Family link" : links
-        })
-        df.set_index('Individuals',inplace=True)
-        return df
-
-
    
     def get(self,v1,v2) :
         """
